@@ -1,5 +1,7 @@
 class BlogPostsController < ApplicationController
+    before_action :authentificate_user!, except: [:index, :show]
     before_action :set_blog_post, except: [:index, :new, :create]
+    
 
     def index
         @blog_posts = BlogPost.all
@@ -47,5 +49,9 @@ class BlogPostsController < ApplicationController
         @blog_post = BlogPost.find(params[:id])
     rescue ActiveRecord::RecordNotFound
         redirect_to root_path
+    end
+
+    def authentificate_user!
+        redirect_to new_user_session_path, alert: "You must sign in or sign up to continue" unless user_signed_in?
     end
 end
