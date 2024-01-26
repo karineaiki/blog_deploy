@@ -1,0 +1,27 @@
+# database.yml.sample
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: your_app_development
+  username: your_dev_username
+  password: your_dev_password
+  host: localhost
+
+test:
+  <<: *default
+  database: your_app_test
+  username: your_test_username
+  password: your_test_password
+  host: localhost
+
+production:
+  <<: *default
+  database: your_app_production
+  username: your_prod_username
+  password: your_prod_password
+  host: your_prod_database_host

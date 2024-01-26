@@ -1,6 +1,9 @@
 class BlogPostsController < ApplicationController
-    before_action :authentificate_user!, except: [:index, :show]
-    before_action :set_blog_post, except: [:index, :new, :create]
+    # before_action :authentificate_user!, except: [:index, :show]
+    before_action :authentificate_user!, only: [:new, :create, :edit, :update, :destroy]
+
+    # before_action :set_blog_post, except: [:index, :new, :create]
+    before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
     
 
     def index
