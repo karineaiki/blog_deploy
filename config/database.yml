@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  database: blog_production
+  database: <%= ENV.fetch("DB_DATABASE") %>
   host: <%= ENV.fetch("DB_HOST") %>
   username: <%= ENV.fetch("DB_USERNAME") %>
   password: <%= ENV.fetch("DB_PASSWORD") %>
